@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Tab1</ion-title>
+        <ion-title>Tabuada</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true" id="app">
@@ -14,6 +14,8 @@
       <ion-grid>
         <ion-row>
           <p>{{mensagem}}</p>
+        </ion-row>
+        <ion-row>
           <ion-input v-model="numero" type="num" id="numero" placeholder="Digite um numero de 1 a 10"></ion-input>
           <ion-button v-on:click="criarTabuada()">Enviar</ion-button>  
         </ion-row>
@@ -21,7 +23,7 @@
       <ion-grid>
         <ul>
             <li v-for="item in numeros" :key="item">
-                {{ item.num }} x {{ item.mult }} = {{item.result}}
+                {{ item.numero }} x {{ item.multiplicador }} = {{item.resultado}}
             </li>
         </ul>
       </ion-grid>
@@ -48,14 +50,14 @@ export default  defineComponent({
     return {
       mensagem: 'Insira um numero...',
       numero: 0,
-      numeros: [{num:0, mult:0, result:0}]
+      numeros: [{numero:0, multiplicador:0, resultado:0}]
     }
   },
   methods: {
     criarTabuada(){
-      this.numeros = [{num:0, mult:0, result:0}]
+      this.numeros = [{numero:this.numero, multiplicador:0, resultado:0}]
       for(let i=1; i<=10; i++){
-        this.numeros.push({num:this.numero, mult:i, result:this.numero * i})
+        this.numeros.push({numero:this.numero, multiplicador:i, resultado:this.numero * i})
       }
       console.log(this.numeros)
     }
